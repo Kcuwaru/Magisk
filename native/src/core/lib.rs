@@ -23,9 +23,6 @@ pub mod ffi {
         type PropCb;
         unsafe fn get_prop_rs(name: *const c_char, persist: bool) -> String;
         unsafe fn prop_cb_exec(cb: Pin<&mut PropCb>, name: *const c_char, value: *const c_char);
-
-        include!("../base/files.hpp");
-        unsafe fn clone_attr(src: *const c_char, dst: *const c_char);
     }
 
     extern "Rust" {
@@ -51,6 +48,7 @@ pub mod ffi {
         fn get_log_pipe(self: &MagiskD) -> i32;
         fn close_log_pipe(self: &MagiskD);
         fn setup_logfile(self: &MagiskD);
+        fn is_emulator(self: &MagiskD) -> bool;
     }
 }
 
